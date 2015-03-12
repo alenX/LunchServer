@@ -10,7 +10,7 @@ public class LunchClient {
     public static void main(String[] args) throws IOException {
         Order order = new Order("address", "telephone_number", new BigDecimal(100));
 
-        Socket s = new Socket("10.14.11.7", 30000);
+        Socket s = new Socket("ip", 30000);
         OutputStream ops = s.getOutputStream()  ;
         /*OutputStream ops = s.getOutputStream();
         ops.write("dd@测试".getBytes("UTF-8"));
