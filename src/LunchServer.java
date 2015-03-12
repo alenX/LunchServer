@@ -1,6 +1,8 @@
 import org.apache.commons.io.IOUtils;
 
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -10,7 +12,7 @@ import java.util.ArrayList;
  * email:genhaoai@gmail.com
  */
 public class LunchServer {
-    public static void main(String[] args) throws IOException,ClassNotFoundException {
+    public static void main(String[] args) throws Exception {
         ServerSocket ss = new ServerSocket(30000);
         ArrayList<Order> arrayList = new ArrayList<Order>();
         while (true) {
@@ -21,23 +23,20 @@ public class LunchServer {
             ObjectInputStream oos = new ObjectInputStream(input);
             Order order = (Order) oos.readObject();
             arrayList.add(order);
-            if (arrayList.size()>=2){   //TODO
+            if (arrayList.size() >= 2) {   //TODO
                 saveOrder(arrayList);
+                arrayList.clear();
             }
-            arrayList = null;
-            System.out.println(order.getAddress());
             oos.close();
             s.close();
         }
     }
 
-    public static void saveOrder(ArrayList<Order> arrayList){
-        if (arrayList!=null&&arrayList.size()>0){
-            DataBase db = new DataBase();
-            for (Order order :arrayList){
-                //TODO
-                db.update("INSERT INTO ORD(address,telephone,order_amount) VALUES( '"
-                        +order.getAddress()+"','"+order.getTelephone_number()+"','"+order.getOrder_amount()+"')");
+    public static void saveOrder(ArrayList<Order> arrayList) throws Exception {
+        if (arrayList != null && arrayList.size() > 0) {
+            for (Order order : arrayList) {
+                UtislDao<Order> utislDao = new UtislDao<Order>();
+                utislDao.save(order);
             }
         }
     }

@@ -5,6 +5,7 @@ import java.math.BigDecimal;
  * Created by wangss on 2015/3/12.
  * email:genhaoai@gmail.com
  */
+@Table(name = "ord")
 public class Order implements Serializable {
     public Order() {
 
@@ -16,8 +17,11 @@ public class Order implements Serializable {
         this.order_amount = _order_amount;
     }
 
+    @Column(columnName = "address")
     private String address;
+    @Column(columnName = "telephone")
     private String telephone_number;
+    @Column(columnName = "order_amount")
     private BigDecimal order_amount;
 
     public String getAddress() {

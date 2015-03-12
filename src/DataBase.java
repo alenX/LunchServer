@@ -41,6 +41,7 @@ public class DataBase {
 
     public int update(String sql) {
         try {
+            System.out.println(sql);
             pstmt = conn.prepareStatement(sql);
             count = pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -49,37 +50,37 @@ public class DataBase {
         return count;
     }
 
-    public boolean close(){
+    public boolean close() {
         boolean isClose = false;
-        if (resultSet!=null){
+        if (resultSet != null) {
             try {
                 resultSet.close();
-                resultSet=null;
+                resultSet = null;
                 isClose = true;
-            } catch (SQLException e){
+            } catch (SQLException e) {
                 isClose = false;
                 e.printStackTrace();
             }
         }
 
-        if (pstmt!=null){
+        if (pstmt != null) {
             try {
                 pstmt.close();
                 pstmt = null;
-                isClose = true ;
-            } catch (SQLException e){
+                isClose = true;
+            } catch (SQLException e) {
                 isClose = false;
                 e.printStackTrace();
             }
         }
 
-        if (conn !=null){
+        if (conn != null) {
             try {
                 conn.close();
                 conn = null;
                 isClose = true;
 
-            }catch (SQLException e){
+            } catch (SQLException e) {
                 isClose = false;
                 e.printStackTrace();
             }
