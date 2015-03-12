@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="60d6fd52-2e70-4d3b-9113-6e494285e13e" name="Default" comment="add mysql insert function">
+    <list default="true" id="60d6fd52-2e70-4d3b-9113-6e494285e13e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="LunchServer.iws" />
@@ -534,7 +534,13 @@
       <option name="project" value="LOCAL" />
       <updated>1426149793900</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="add mysql insert function">
+      <created>1426149949693</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1426149949693</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
