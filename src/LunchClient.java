@@ -8,7 +8,7 @@ import java.net.Socket;
  */
 public class LunchClient {
     public static void main(String[] args) throws IOException {
-        Order order = new Order("address", "telephone_number", new BigDecimal(100));
+        Order order = new Order("地址位置1", "13805311008", new BigDecimal(100));
 
         Socket s = new Socket("ip", 30000);
         OutputStream ops = s.getOutputStream()  ;
