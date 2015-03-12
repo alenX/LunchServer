@@ -7,6 +7,8 @@
       <root url="jar://$PROJECT_DIR$/lib/annotations-1.0.0.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ideaLibSources/commons-io-2.1-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>
