@@ -1,10 +1,10 @@
 package beans;
 
+import Utils.DBUtils.StateBean;
 import annos.Column;
 import annos.Table;
 import annos.UUID;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
@@ -12,7 +12,7 @@ import java.math.BigDecimal;
  * email:genhaoai@gmail.com
  */
 @Table(name = "ord")
-public class Order implements Serializable {
+public class Order extends StateBean {
     public Order() {
 
     }
