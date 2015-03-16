@@ -1,3 +1,8 @@
+package DBUtils;
+
+import DBUtils.DataBase;
+import annos.*;
+
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -29,9 +34,17 @@ public class UtislDao<T> {
             Column cl = field.getAnnotation(Column.class);
             String columnName = cl.columnName();//字段名称
             columnSql.append(columnName + ",");
-            valueSql.append("'" + readMethod.invoke(t) + "',");
+            annos.UUID uuid = field.getAnnotation(annos.UUID.class);
+            if (uuid!=null&&uuid.isUUID()) {
+                String strUUID = java.util.UUID.randomUUID().toString().toUpperCase().replaceAll("\\-","").substring(0,31);
+                valueSql.append("'" + strUUID + "',");
+            } else {
+                valueSql.append("'" + readMethod.invoke(t) + "',");
+            }
+
         }
         DataBase dataBase = new DataBase();
         dataBase.update(insertSql + tableName + columnSql.subSequence(0, columnSql.length() - 1) + ")" + valueSql.subSequence(0, valueSql.length() - 1) + ")");
+        dataBase.close();
     }
 }

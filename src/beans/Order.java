@@ -1,3 +1,9 @@
+package beans;
+
+import annos.Column;
+import annos.Table;
+import annos.UUID;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -17,12 +23,24 @@ public class Order implements Serializable {
         this.order_amount = _order_amount;
     }
 
+
+    @UUID(isUUID = true)
+    @Column(columnName = "id")
+    private String id;
     @Column(columnName = "address")
     private String address;
     @Column(columnName = "telephone")
     private String telephone_number;
     @Column(columnName = "order_amount")
     private BigDecimal order_amount;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getAddress() {
         return address;

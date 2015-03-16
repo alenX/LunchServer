@@ -1,3 +1,5 @@
+package DBUtils;
+
 import java.sql.*;
 
 /**
