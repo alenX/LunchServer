@@ -1,5 +1,7 @@
 import Utils.DBUtils.UtislDao;
 import beans.Order;
+import com.example.myapp.Model.Ord;
+import com.example.myapp.Model.Product;
 import org.apache.commons.io.IOUtils;
 
 import java.io.ByteArrayInputStream;
@@ -16,16 +18,18 @@ import java.util.ArrayList;
 public class LunchServer {
     public static void main(String[] args) throws Exception {
         ServerSocket ss = new ServerSocket(30000);
-        ArrayList<Order> arrayList = new ArrayList<Order>();
+        ArrayList<Product> arrayList = new ArrayList<Product>();
         while (true) {
             Socket s = ss.accept();
             InputStream is = s.getInputStream();
             //将Input转换为数组
             ByteArrayInputStream input = new ByteArrayInputStream(IOUtils.toByteArray(is));
             ObjectInputStream oos = new ObjectInputStream(input);
-            Order order = (Order) oos.readObject();
-            arrayList.add(order);
-            if (arrayList.size() >= 2) {   //TODO
+            Product ord = (Product) oos.readObject();
+            arrayList.add(ord);
+//            UtislDao<Order> utislDao = new UtislDao<Order>();
+//            utislDao.delete(arrayList);
+            if (arrayList.size() !=0) {   //TODO
                 saveOrder(arrayList);
                 arrayList.clear();
             }
@@ -34,10 +38,10 @@ public class LunchServer {
         }
     }
 
-    public static void saveOrder(ArrayList<Order> arrayList) throws Exception {
+    public static void saveOrder(ArrayList<Product> arrayList) throws Exception {
         if (arrayList != null && arrayList.size() > 0) {
-            for (Order order : arrayList) {
-                UtislDao<Order> utislDao = new UtislDao<Order>();
+            for (Product order : arrayList) {
+                UtislDao<Product> utislDao = new UtislDao<Product>();
                 utislDao.save(order);
             }
         }

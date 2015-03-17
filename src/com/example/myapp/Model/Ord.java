@@ -1,4 +1,4 @@
-package beans;
+package com.example.myapp.Model;
 
 import Utils.DBUtils.StateBean;
 import annos.Column;
@@ -8,16 +8,16 @@ import annos.UUID;
 import java.math.BigDecimal;
 
 /**
- * Created by wangss on 2015/3/12.
+ * Created by wangss on 2015/3/17.
  * email:genhaoai@gmail.com
  */
 @Table(name = "ord",keyField ="id" )
-public class Order extends StateBean {
-    public Order() {
+public class Ord extends StateBean {
+    public Ord() {
 
     }
 
-    public Order(String _address, String _telephone_number, BigDecimal _order_amount) {
+    public Ord(String _address, String _telephone_number, BigDecimal _order_amount) {
         this.address = _address;
         this.telephone_number = _telephone_number;
         this.order_amount = _order_amount;
